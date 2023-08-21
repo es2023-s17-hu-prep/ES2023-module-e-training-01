@@ -31,7 +31,7 @@ Create a standalone web component named `DateTimeline` to visually represent a r
 
 ##### 4. Visual Indicators
 - A distinct line segment should appear on the timeline between the starting and ending dates to indicate the "highlighted" range. This segment's color differs from the rest of the timeline.
-- Circles falling inside this highlighted range are filled, while those outside the range are only outlined.
+- Circles falling inside this highlighted range (including the starting year) are filled, while those outside the range are only outlined.
 - If the timeline is showing a summarized view (more than 6 years difference), the timeline's right end should have a dotted line extension to indicate truncation.
 
 ##### 5. No Dependencies
