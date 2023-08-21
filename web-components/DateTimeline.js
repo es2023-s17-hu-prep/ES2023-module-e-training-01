@@ -8,10 +8,10 @@ template.innerHTML = `
 
     .container {
       position: relative;
-      width: fit-content;
+      width: 100%;
       display: flex;
       align-items: center;
-      gap: 150px;
+      justify-content: space-between;
       margin-top: 25px;
       isolation: isolate;
     }
@@ -66,9 +66,7 @@ template.innerHTML = `
     }
   </style>
 
-  <div class="container">
-    
-  </div>
+  <div class="container"></div>
 `;
 
 // create the web component's class
@@ -120,8 +118,8 @@ class DateTimeline extends HTMLElement {
       const filled = year >= this.#starting.year && year <= this.#ending.year;
 
       innerHTML += `<div 
-      class="dot ${filled ? "filled" : ""}" 
-      data-year="${year}"
+        class="dot ${filled ? "filled" : ""}" 
+        data-year="${year}"
       ></div>`;
 
       if (overflow && year === toYear) {
@@ -132,11 +130,12 @@ class DateTimeline extends HTMLElement {
     container.innerHTML = innerHTML;
 
     // --- calculate and set the highlighted areas ---
-    const yearWidth = 150 + 40; // gap + dot width
+    const dots = toYear - fromYear + (overflow ? 1 : 0);
+    const yearWidth = 100 / dots; // gap + dot width
 
     // the start position in px
     const startYearPx = (this.#starting.year - fromYear) * yearWidth;
-    const startMonthPx = (yearWidth / 12) * (this.#starting.month + 1);
+    const startMonthPx = (yearWidth / 12) * this.#starting.month;
     const start = Math.floor(startYearPx + startMonthPx);
 
     // the width in px
@@ -145,8 +144,8 @@ class DateTimeline extends HTMLElement {
       (yearWidth / 12) * Math.abs(this.#ending.month - this.#starting.month);
     const width = widthYearPx + widthMonthPx;
 
-    container.style.setProperty("--highlight-start", `${start}px`);
-    container.style.setProperty("--highlight-width", `${width}px`);
+    container.style.setProperty("--highlight-start", `${start}%`);
+    container.style.setProperty("--highlight-width", `${width}%`);
   }
 
   // define the attributes to listen
