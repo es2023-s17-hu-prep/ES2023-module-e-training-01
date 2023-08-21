@@ -17,23 +17,26 @@ class DateTimeline extends HTMLElement {
         // Calculate the difference in whole years
         const difference = ending.year - starting.year + (ending.month > starting.month ? 1 : 0);
 
+        // Calculate years in the timeline
+        const affectedYears = ending.year - starting.year + 1;
+
         // Does it need to be in the summarized view?
         const summarized = difference > SUMMARIZED_LIMIT;
 
         // Get the start and end year of the timeline (if not summarized)
-        const startYear = Math.ceil(starting.year - (SUMMARIZED_LIMIT - difference) / 2);
-        const endYear = ending.year + (starting.year - startYear) + 1;
+        const startYear = starting.year - 4 + affectedYears;
+        const endYear = ending.year + 6 - affectedYears;
 
         // Get the visible years in an array
         const years = [];
         const actualStart = summarized ? starting.year : startYear;
-        for (let year = actualStart; year < (summarized ? starting.year+SUMMARIZED_LIMIT : endYear); year++) {
+        for (let year = actualStart; year < (summarized ? starting.year+SUMMARIZED_LIMIT+1 : endYear); year++) {
             years.push(year)
         }
 
         // Get the percentage of the start and end lines
-        const startingPercent = (starting.year - actualStart + starting.month/12) / (years.length - 1) * 100;
-        const endingPercent = summarized ? 0 : Math.abs(100 - (ending.year - startYear + ending.month/12) / (years.length - 1) * 100);
+        const startingPercent = (starting.year - actualStart + (starting.month-1)/12) / (years.length - 1) * 100;
+        const endingPercent = summarized ? 0 : Math.abs(100 - (ending.year - startYear + (ending.month-1)/12) / (years.length - 1) * 100);
 
         // Create html template for the timeline
         const template = document.createElement('template')
