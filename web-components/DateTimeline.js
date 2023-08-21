@@ -130,19 +130,20 @@ class DateTimeline extends HTMLElement {
     container.innerHTML = innerHTML;
 
     // --- calculate and set the highlighted areas ---
-    const dots = toYear - fromYear + (overflow ? 1 : 0);
+    const dots = toYear - fromYear;
     const yearWidth = 100 / dots; // gap + dot width
 
     // the start position in px
-    const startYearPx = (this.#starting.year - fromYear) * yearWidth;
-    const startMonthPx = (yearWidth / 12) * this.#starting.month;
-    const start = Math.floor(startYearPx + startMonthPx);
+    const startYearPercentage = (this.#starting.year - fromYear) * yearWidth;
+    const startMonthPercentage = (yearWidth / 12) * this.#starting.month;
+    const start = startYearPercentage + startMonthPercentage;
 
-    // the width in px
-    const widthYearPx = (this.#ending.year - this.#starting.year) * yearWidth;
-    const widthMonthPx =
+    // the width in Percentage
+    const widthYearPercentage =
+      (this.#ending.year - this.#starting.year) * yearWidth;
+    const widthMonthPercentage =
       (yearWidth / 12) * Math.abs(this.#ending.month - this.#starting.month);
-    const width = widthYearPx + widthMonthPx;
+    const width = widthYearPercentage + widthMonthPercentage;
 
     container.style.setProperty("--highlight-start", `${start}%`);
     container.style.setProperty("--highlight-width", `${width}%`);
