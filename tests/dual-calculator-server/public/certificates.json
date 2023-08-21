@@ -1,0 +1,872 @@
+[
+  {
+    "id": "1",
+    "name": "Bányaipari technikus",
+    "sectorId": "1"
+  },
+  {
+    "id": "2",
+    "name": "Bányaművelő",
+    "sectorId": "1"
+  },
+  {
+    "id": "3",
+    "name": "Fémelőállító",
+    "sectorId": "1"
+  },
+  {
+    "id": "4",
+    "name": "Fluidumkitermelő",
+    "sectorId": "1"
+  },
+  {
+    "id": "5",
+    "name": "Fluidumkitermelő technikus",
+    "sectorId": "1"
+  },
+  {
+    "id": "6",
+    "name": "Kohász- és öntésztechnikus",
+    "sectorId": "1"
+  },
+  {
+    "id": "7",
+    "name": "Öntvénykészítő",
+    "sectorId": "1"
+  },
+  {
+    "id": "8",
+    "name": "Fogtechnikus",
+    "sectorId": "2"
+  },
+  {
+    "id": "9",
+    "name": "Optikaitermék-készítő",
+    "sectorId": "2"
+  },
+  {
+    "id": "10",
+    "name": "Optikus",
+    "sectorId": "2"
+  },
+  {
+    "id": "11",
+    "name": "Általános ápoló",
+    "sectorId": "3"
+  },
+  {
+    "id": "12",
+    "name": "Egészségügyi asszisztens",
+    "sectorId": "3"
+  },
+  {
+    "id": "13",
+    "name": "Egészségügyi laboráns",
+    "sectorId": "3"
+  },
+  {
+    "id": "14",
+    "name": "Gyakorló ápoló",
+    "sectorId": "3"
+  },
+  {
+    "id": "15",
+    "name": "Klinikai laboratóriumi szakasszisztens",
+    "sectorId": "3"
+  },
+  {
+    "id": "16",
+    "name": "Ortopédiai műszerész",
+    "sectorId": "3"
+  },
+  {
+    "id": "17",
+    "name": "Perioperatív szakasszisztens",
+    "sectorId": "3"
+  },
+  {
+    "id": "18",
+    "name": "Radiográfiai szakasszisztens",
+    "sectorId": "3"
+  },
+  {
+    "id": "19",
+    "name": "Rehabilitációs terapeuta",
+    "sectorId": "3"
+  },
+  {
+    "id": "20",
+    "name": "Szövettani szakasszisztens",
+    "sectorId": "3"
+  },
+  {
+    "id": "21",
+    "name": "Mentőápoló",
+    "sectorId": "3"
+  },
+  {
+    "id": "22",
+    "name": "Automatikai technikus",
+    "sectorId": "4"
+  },
+  {
+    "id": "23",
+    "name": "Elektronikai műszerész",
+    "sectorId": "4"
+  },
+  {
+    "id": "24",
+    "name": "Elektronikai technikus",
+    "sectorId": "4"
+  },
+  {
+    "id": "25",
+    "name": "Erősáramú elektrotechnikus",
+    "sectorId": "4"
+  },
+  {
+    "id": "26",
+    "name": "Ipari informatikai technikus",
+    "sectorId": "4"
+  },
+  {
+    "id": "27",
+    "name": "Közlekedésautomatikai technikus",
+    "sectorId": "4"
+  },
+  {
+    "id": "28",
+    "name": "Villanyszerelő",
+    "sectorId": "4"
+  },
+  {
+    "id": "29",
+    "name": "Bor- és pezsgőgyártó technikus",
+    "sectorId": "5"
+  },
+  {
+    "id": "30",
+    "name": "Édességkészítő",
+    "sectorId": "5"
+  },
+  {
+    "id": "31",
+    "name": "Élelmiszer-ellenőrzési technikus",
+    "sectorId": "5"
+  },
+  {
+    "id": "32",
+    "name": "Élelmiszeripari gépésztechnikus",
+    "sectorId": "5"
+  },
+  {
+    "id": "33",
+    "name": "Élelmiszeripari gépkezelő",
+    "sectorId": "5"
+  },
+  {
+    "id": "34",
+    "name": "Erjedés- és üdítőital-ipari termékkészítő",
+    "sectorId": "5"
+  },
+  {
+    "id": "35",
+    "name": "Hentes és húskészítmény-készítő",
+    "sectorId": "5"
+  },
+  {
+    "id": "36",
+    "name": "Húsipari technikus",
+    "sectorId": "5"
+  },
+  {
+    "id": "37",
+    "name": "Kistermelői élelmiszer-előállító",
+    "sectorId": "5"
+  },
+  {
+    "id": "38",
+    "name": "Pék",
+    "sectorId": "5"
+  },
+  {
+    "id": "39",
+    "name": "Pék-cukrász",
+    "sectorId": "5"
+  },
+  {
+    "id": "40",
+    "name": "Sütő- és cukrászipari technikus",
+    "sectorId": "5"
+  },
+  {
+    "id": "41",
+    "name": "Szőlész-borász",
+    "sectorId": "5"
+  },
+  {
+    "id": "42",
+    "name": "Tartósítóipari technikus",
+    "sectorId": "5"
+  },
+  {
+    "id": "43",
+    "name": "Tartósítóipari termék-készítő",
+    "sectorId": "5"
+  },
+  {
+    "id": "44",
+    "name": "Tejipari technikus",
+    "sectorId": "5"
+  },
+  {
+    "id": "45",
+    "name": "Tejtermékkészítő",
+    "sectorId": "5"
+  },
+  {
+    "id": "46",
+    "name": "Ács",
+    "sectorId": "6"
+  },
+  {
+    "id": "47",
+    "name": "Bádogos",
+    "sectorId": "6"
+  },
+  {
+    "id": "48",
+    "name": "Burkoló",
+    "sectorId": "6"
+  },
+  {
+    "id": "49",
+    "name": "Épületszobrász és műköves",
+    "sectorId": "6"
+  },
+  {
+    "id": "50",
+    "name": "Festő, mázoló, tapétázó",
+    "sectorId": "6"
+  },
+  {
+    "id": "51",
+    "name": "Hídépítő és -fenntartó technikus",
+    "sectorId": "6"
+  },
+  {
+    "id": "52",
+    "name": "Kőfaragó",
+    "sectorId": "6"
+  },
+  {
+    "id": "53",
+    "name": "Kőműves",
+    "sectorId": "6"
+  },
+  {
+    "id": "54",
+    "name": "Magasépítő technikus",
+    "sectorId": "6"
+  },
+  {
+    "id": "55",
+    "name": "Mélyépítő technikus",
+    "sectorId": "6"
+  },
+  {
+    "id": "56",
+    "name": "Szárazépítő",
+    "sectorId": "6"
+  },
+  {
+    "id": "57",
+    "name": "Szerkezetépítő és -szerelő",
+    "sectorId": "6"
+  },
+  {
+    "id": "58",
+    "name": "Szigetelő",
+    "sectorId": "6"
+  },
+  {
+    "id": "59",
+    "name": "Tetőfedő",
+    "sectorId": "6"
+  },
+  {
+    "id": "60",
+    "name": "Útépítő és útfenntartó",
+    "sectorId": "6"
+  },
+  {
+    "id": "61",
+    "name": "Útépítő, vasútépítő és -fenntartó technikus",
+    "sectorId": "6"
+  },
+  {
+    "id": "62",
+    "name": "Épületgépész technikus",
+    "sectorId": "7"
+  },
+  {
+    "id": "63",
+    "name": "Hűtő- és szellőzésrendszer-szerelő",
+    "sectorId": "7"
+  },
+  {
+    "id": "64",
+    "name": "Központifűtés- és gázhálózatrendszer-szerelő",
+    "sectorId": "7"
+  },
+  {
+    "id": "65",
+    "name": "Víz- és csatornarendszer-szerelő",
+    "sectorId": "7"
+  },
+  {
+    "id": "66",
+    "name": "Asztalos",
+    "sectorId": "8"
+  },
+  {
+    "id": "67",
+    "name": "Faipari technikus",
+    "sectorId": "8"
+  },
+  {
+    "id": "68",
+    "name": "Kárpitos",
+    "sectorId": "8"
+  },
+  {
+    "id": "69",
+    "name": "Pénzügyi-számviteli ügyintéző",
+    "sectorId": "9"
+  },
+  {
+    "id": "70",
+    "name": "Vállalkozási ügyviteli ügyintéző",
+    "sectorId": "9"
+  },
+  {
+    "id": "71",
+    "name": "CNC-programozó",
+    "sectorId": "10"
+  },
+  {
+    "id": "72",
+    "name": "Építő-, szállító- és munkagép-szerelő",
+    "sectorId": "10"
+  },
+  {
+    "id": "73",
+    "name": "Épület- és szerkezetlakatos",
+    "sectorId": "10"
+  },
+  {
+    "id": "74",
+    "name": "Finommechanikai műszerész",
+    "sectorId": "10"
+  },
+  {
+    "id": "75",
+    "name": "Gépész technikus",
+    "sectorId": "10"
+  },
+  {
+    "id": "76",
+    "name": "Gépgyártás-technológiai technikus",
+    "sectorId": "10"
+  },
+  {
+    "id": "77",
+    "name": "Gépi és CNC forgácsoló",
+    "sectorId": "10"
+  },
+  {
+    "id": "78",
+    "name": "Hegesztő",
+    "sectorId": "10"
+  },
+  {
+    "id": "79",
+    "name": "Ipari gépész",
+    "sectorId": "10"
+  },
+  {
+    "id": "80",
+    "name": "Légijármű-műszerész technikus",
+    "sectorId": "10"
+  },
+  {
+    "id": "81",
+    "name": "Légijármű-szerelő technikus",
+    "sectorId": "10"
+  },
+  {
+    "id": "82",
+    "name": "Szerszám- és készülékgyártó",
+    "sectorId": "10"
+  },
+  {
+    "id": "83",
+    "name": "Vasútijármű-szerelő technikus",
+    "sectorId": "10"
+  },
+  {
+    "id": "84",
+    "name": "Fegyvergyártó szaktechnikus",
+    "sectorId": "11"
+  },
+  {
+    "id": "85",
+    "name": "Fegyverműszerész technikus",
+    "sectorId": "11"
+  },
+  {
+    "id": "86",
+    "name": "Fegyveroptikai szaktechnikus",
+    "sectorId": "11"
+  },
+  {
+    "id": "87",
+    "name": "Honvéd altiszt",
+    "sectorId": "11"
+  },
+  {
+    "id": "88",
+    "name": "Honvéd kadét",
+    "sectorId": "11"
+  },
+  {
+    "id": "89",
+    "name": "Infokommunikációs hálózatépítő és -üzemeltető technikus",
+    "sectorId": "12"
+  },
+  {
+    "id": "90",
+    "name": "Informatikai rendszer- és alkalmazás-üzemeltető technikus",
+    "sectorId": "12"
+  },
+  {
+    "id": "91",
+    "name": "Szoftverfejlesztő és -tesztelő",
+    "sectorId": "12"
+  },
+  {
+    "id": "92",
+    "name": "Távközlési technikus",
+    "sectorId": "12"
+  },
+  {
+    "id": "93",
+    "name": "Idegen nyelvű ipari és kereskedelmi technikus",
+    "sectorId": "13"
+  },
+  {
+    "id": "94",
+    "name": "Kereskedelmi értékesítő",
+    "sectorId": "13"
+  },
+  {
+    "id": "95",
+    "name": "Kereskedő és webáruházi technikus",
+    "sectorId": "13"
+  },
+  {
+    "id": "96",
+    "name": "Hulladékfeldolgozó munkatárs",
+    "sectorId": "14"
+  },
+  {
+    "id": "97",
+    "name": "Környezetvédelmi technikus",
+    "sectorId": "14"
+  },
+  {
+    "id": "98",
+    "name": "Vízügyi munkatárs",
+    "sectorId": "14"
+  },
+  {
+    "id": "99",
+    "name": "Vízügyi technikus",
+    "sectorId": "14"
+  },
+  {
+    "id": "100",
+    "name": "Hajózási technikus",
+    "sectorId": "15"
+  },
+  {
+    "id": "101",
+    "name": "Képesített hajós",
+    "sectorId": "15"
+  },
+  {
+    "id": "102",
+    "name": "Kishajóépítő és -karbantartó",
+    "sectorId": "15"
+  },
+  {
+    "id": "103",
+    "name": "Kocsivizsgáló technikus",
+    "sectorId": "15"
+  },
+  {
+    "id": "104",
+    "name": "Közlekedésüzemvitel-ellátó technikus",
+    "sectorId": "15"
+  },
+  {
+    "id": "105",
+    "name": "Logisztikai technikus",
+    "sectorId": "15"
+  },
+  {
+    "id": "106",
+    "name": "Postai üzleti ügyintéző",
+    "sectorId": "15"
+  },
+  {
+    "id": "107",
+    "name": "Vasútforgalmi szolgálattevő technikus",
+    "sectorId": "15"
+  },
+  {
+    "id": "108",
+    "name": "Bőrtermékkészítő",
+    "sectorId": "16"
+  },
+  {
+    "id": "109",
+    "name": "Divat-, jelmez- és díszlettervező",
+    "sectorId": "16"
+  },
+  {
+    "id": "110",
+    "name": "Divatszabó",
+    "sectorId": "16"
+  },
+  {
+    "id": "111",
+    "name": "Kerámia- és porcelánkészítő",
+    "sectorId": "16"
+  },
+  {
+    "id": "112",
+    "name": "Könnyűipari technikus",
+    "sectorId": "16"
+  },
+  {
+    "id": "113",
+    "name": "Textilgyártó",
+    "sectorId": "16"
+  },
+  {
+    "id": "114",
+    "name": "Dekoratőr",
+    "sectorId": "16"
+  },
+  {
+    "id": "115",
+    "name": "Fotográfus",
+    "sectorId": "16"
+  },
+  {
+    "id": "116",
+    "name": "Grafikus",
+    "sectorId": "16"
+  },
+  {
+    "id": "117",
+    "name": "Mozgókép- és animációkészítő",
+    "sectorId": "16"
+  },
+  {
+    "id": "118",
+    "name": "Nyomdaipari technikus",
+    "sectorId": "16"
+  },
+  {
+    "id": "119",
+    "name": "Nyomdász",
+    "sectorId": "16"
+  },
+  {
+    "id": "120",
+    "name": "Hangtechnikus",
+    "sectorId": "16"
+  },
+  {
+    "id": "121",
+    "name": "Színház- és rendezvénytechnikus",
+    "sectorId": "16"
+  },
+  {
+    "id": "122",
+    "name": "Erdőművelő-fakitermelő",
+    "sectorId": "17"
+  },
+  {
+    "id": "123",
+    "name": "Erdésztechnikus",
+    "sectorId": "17"
+  },
+  {
+    "id": "124",
+    "name": "Földmérő, földügyi és térinformatikai technikus",
+    "sectorId": "17"
+  },
+  {
+    "id": "125",
+    "name": "Gazda",
+    "sectorId": "17"
+  },
+  {
+    "id": "126",
+    "name": "Kertész",
+    "sectorId": "17"
+  },
+  {
+    "id": "127",
+    "name": "Kertésztechnikus",
+    "sectorId": "17"
+  },
+  {
+    "id": "128",
+    "name": "Mezőgazdasági gépész",
+    "sectorId": "17"
+  },
+  {
+    "id": "129",
+    "name": "Mezőgazdasági gépésztechnikus",
+    "sectorId": "17"
+  },
+  {
+    "id": "130",
+    "name": "Mezőgazdasági technikus",
+    "sectorId": "17"
+  },
+  {
+    "id": "131",
+    "name": "Közszolgálati technikus",
+    "sectorId": "18"
+  },
+  {
+    "id": "132",
+    "name": "Rendészeti őr",
+    "sectorId": "18"
+  },
+  {
+    "id": "133",
+    "name": "Rendőr tiszthelyettes",
+    "sectorId": "18"
+  },
+  {
+    "id": "134",
+    "name": "Alternatív járműhajtási technikus",
+    "sectorId": "19"
+  },
+  {
+    "id": "135",
+    "name": "Autógyártó",
+    "sectorId": "19"
+  },
+  {
+    "id": "136",
+    "name": "Fémszerkezetfelület-bevonó",
+    "sectorId": "19"
+  },
+  {
+    "id": "137",
+    "name": "Gépjármű-mechatronikai technikus",
+    "sectorId": "19"
+  },
+  {
+    "id": "138",
+    "name": "Gépjármű mechatronikus",
+    "sectorId": "19"
+  },
+  {
+    "id": "139",
+    "name": "Gyártósori gépbeállító",
+    "sectorId": "19"
+  },
+  {
+    "id": "140",
+    "name": "Ipari szerviztechnikus",
+    "sectorId": "19"
+  },
+  {
+    "id": "141",
+    "name": "Járműfényező",
+    "sectorId": "19"
+  },
+  {
+    "id": "142",
+    "name": "Járműipari karbantartó technikus",
+    "sectorId": "19"
+  },
+  {
+    "id": "143",
+    "name": "Járműkarosszéria-előkészítő, felületbevonó",
+    "sectorId": "19"
+  },
+  {
+    "id": "144",
+    "name": "Karosszérialakatos",
+    "sectorId": "19"
+  },
+  {
+    "id": "145",
+    "name": "Mechatronikai technikus",
+    "sectorId": "19"
+  },
+  {
+    "id": "146",
+    "name": "Mechatronikus karbantartó",
+    "sectorId": "19"
+  },
+  {
+    "id": "147",
+    "name": "Fitness-wellness instruktor",
+    "sectorId": "20"
+  },
+  {
+    "id": "148",
+    "name": "Sportedző (a sportág megjelölésével) - sportszervező",
+    "sectorId": "20"
+  },
+  {
+    "id": "149",
+    "name": "Fodrász",
+    "sectorId": "21"
+  },
+  {
+    "id": "150",
+    "name": "Kéz- és lábápoló technikus",
+    "sectorId": "21"
+  },
+  {
+    "id": "151",
+    "name": "Kozmetikus technikus",
+    "sectorId": "21"
+  },
+  {
+    "id": "152",
+    "name": "Gyermek- és ifjúsági felügyelő",
+    "sectorId": "22"
+  },
+  {
+    "id": "153",
+    "name": "Kisgyermekgondozó, -nevelő",
+    "sectorId": "22"
+  },
+  {
+    "id": "154",
+    "name": "Szociális ápoló és gondozó",
+    "sectorId": "22"
+  },
+  {
+    "id": "155",
+    "name": "Szociális és gyermekvédelmi szakasszisztens",
+    "sectorId": "22"
+  },
+  {
+    "id": "156",
+    "name": "Szociális és mentálhigiénés szakgondozó",
+    "sectorId": "22"
+  },
+  {
+    "id": "157",
+    "name": "Szociális és rehabilitációs szakgondozó",
+    "sectorId": "22"
+  },
+  {
+    "id": "158",
+    "name": "Cukrász",
+    "sectorId": "23"
+  },
+  {
+    "id": "159",
+    "name": "Cukrász szaktechnikus",
+    "sectorId": "23"
+  },
+  {
+    "id": "160",
+    "name": "Panziós-fogadós",
+    "sectorId": "23"
+  },
+  {
+    "id": "161",
+    "name": "Pincér - vendégtéri szakember",
+    "sectorId": "23"
+  },
+  {
+    "id": "162",
+    "name": "Szakács",
+    "sectorId": "23"
+  },
+  {
+    "id": "163",
+    "name": "Szakács szaktechnikus",
+    "sectorId": "23"
+  },
+  {
+    "id": "164",
+    "name": "Turisztikai technikus",
+    "sectorId": "23"
+  },
+  {
+    "id": "165",
+    "name": "Vendégtéri szaktechnikus",
+    "sectorId": "23"
+  },
+  {
+    "id": "166",
+    "name": "Abroncsgyártó",
+    "sectorId": "24"
+  },
+  {
+    "id": "167",
+    "name": "Gumiipari technikus",
+    "sectorId": "24"
+  },
+  {
+    "id": "168",
+    "name": "Gyógyszerkészítmény-gyártó",
+    "sectorId": "24"
+  },
+  {
+    "id": "169",
+    "name": "Műanyag-feldolgozó",
+    "sectorId": "24"
+  },
+  {
+    "id": "170",
+    "name": "Műanyag-feldolgozó technikus",
+    "sectorId": "24"
+  },
+  {
+    "id": "171",
+    "name": "Papírgyártó és -feldolgozó, csomagolószer-gyártó",
+    "sectorId": "24"
+  },
+  {
+    "id": "172",
+    "name": "Papírgyártó és -feldolgozó, csomagolószer-gyártó technikus",
+    "sectorId": "24"
+  },
+  {
+    "id": "173",
+    "name": "Vegyész technikus",
+    "sectorId": "24"
+  },
+  {
+    "id": "174",
+    "name": "Vegyipari rendszerkezelő",
+    "sectorId": "24"
+  }
+]
