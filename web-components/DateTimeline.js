@@ -21,8 +21,8 @@ class DateTimeline extends HTMLElement {
         const summarized = difference > SUMMARIZED_LIMIT;
 
         // Get the start and end year of the timeline (if not summarized)
-        const startYear = Math.ceil(starting.year - (SUMMARIZED_LIMIT - difference - 1) / 2);
-        const endYear = startYear + SUMMARIZED_LIMIT+1;
+        const startYear = Math.ceil(starting.year - (SUMMARIZED_LIMIT - difference) / 2);
+        const endYear = ending.year + (starting.year - startYear) + 1;
 
         // Get the visible years in an array
         const years = [];
