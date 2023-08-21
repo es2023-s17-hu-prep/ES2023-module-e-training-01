@@ -60,16 +60,14 @@ template.innerHTML = `
 
     .dot-dot {
       height: 0px;
-      position: absolute;
-      right: -50px;
-      width: 50px;
-      border-bottom: 6px dotted #9c27b0;
-      display: none;
+      width: 70px;
+      border-bottom: 6px dashed #f4f4f4;
+      z-index: 3;
     }
   </style>
 
   <div class="container">
-    <div class="dot-dot"></div>
+    
   </div>
 `;
 
@@ -106,9 +104,11 @@ class DateTimeline extends HTMLElement {
     }
 
     // if the interval is more than 6 years, display only the first 6 years
+    let overflow = false;
     if (toYear - fromYear > 6) {
       toYear = fromYear + 6;
-      this.shadowRoot.querySelector(".dot-dot").style.display = "block";
+      // this.shadowRoot.querySelector(".dot-dot").style.display = "block";
+      overflow = true;
     }
 
     // --- generate the dots ---
@@ -120,9 +120,13 @@ class DateTimeline extends HTMLElement {
       const filled = year >= this.#starting.year && year <= this.#ending.year;
 
       innerHTML += `<div 
-        class="dot ${filled ? "filled" : ""}" 
-        data-year="${year}"
+      class="dot ${filled ? "filled" : ""}" 
+      data-year="${year}"
       ></div>`;
+
+      if (overflow && year === toYear) {
+        innerHTML += '<div class="dot-dot"></div>';
+      }
     }
 
     container.innerHTML = innerHTML;
