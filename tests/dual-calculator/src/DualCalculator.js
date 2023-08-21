@@ -25,12 +25,12 @@ class DualCalculator {
         }
 
         const multiplier = certificate.sector.multiplier;
-        return (this.baseAmount * multiplier) / 250 * this.numberOfWorkingDay;
+        return (this.baseAmount * multiplier) / 250 * this.numberOfWorkingDay * this.numberOfStudent;
     }
 
     getSalaryCost() {
         const months = this._getMonthsDifference();
-        return months * this.monthlySalary;
+        return months * this.monthlySalary * this.numberOfStudent;
     }
 }
 

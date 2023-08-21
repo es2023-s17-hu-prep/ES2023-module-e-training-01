@@ -3,7 +3,7 @@ const CertificateService = require("./CertificateService");
 const DualCalculator = require("./DualCalculator");
 
 const sectorService = new SectorService();
-let certificateService;  // Declare the variable at a broader scope, but don't initialize it yet
+let certificateService;  
 
 async function fetchData() {
     await sectorService.fetchSectorsFromAPI();
@@ -19,7 +19,7 @@ async function main() {
         {year: 2023, month: 6},
         {year: 2024, month: 2},
         2, 
-        10, 
+        3, 
         2000000, 
         250, 
         100000
