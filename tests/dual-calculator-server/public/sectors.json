@@ -1,0 +1,147 @@
+[
+  {
+    "id": "1",
+    "name": "bányászat és kohászat",
+    "multiplier": 2.42
+  },
+  {
+    "id": "2",
+    "name": "egészségügyi technika",
+    "multiplier": 2.85
+  },
+  {
+    "id": "3",
+    "name": "egészségügy",
+    "multiplier": 2.2
+  },
+  {
+    "id": "4",
+    "name": "elektronika és elektrotechnika",
+    "multiplier": 2.85
+  },
+  {
+    "id": "4",
+    "name": "elektronika és elektrotechnika",
+    "multiplier": 2.42
+  },
+  {
+    "id": "5",
+    "name": "élelmiszeripar",
+    "multiplier": 2.2
+  },
+  {
+    "id": "6",
+    "name": "építőipar",
+    "multiplier": 2.42
+  },
+  {
+    "id": "7",
+    "name": "épületgépészet",
+    "multiplier": 2.42
+  },
+  {
+    "id": "8",
+    "name": "fa- és bútoripar",
+    "multiplier": 2.42
+  },
+  {
+    "id": "9",
+    "name": "gazdálkodás és menedzsment",
+    "multiplier": 2.2
+  },
+  {
+    "id": "10",
+    "name": "gépészet",
+    "multiplier": 2.85
+  },
+  {
+    "id": "10",
+    "name": "gépészet",
+    "multiplier": 2.42
+  },
+  {
+    "id": "11",
+    "name": "honvédelem",
+    "multiplier": 2.85
+  },
+  {
+    "id": "12",
+    "name": "informatika és távközlés",
+    "multiplier": 2.2
+  },
+  {
+    "id": "13",
+    "name": "kereskedelem",
+    "multiplier": 2.2
+  },
+  {
+    "id": "14",
+    "name": "környezetvédelem és vízügy",
+    "multiplier": 2.85
+  },
+  {
+    "id": "14",
+    "name": "környezetvédelem és vízügy",
+    "multiplier": 2.42
+  },
+  {
+    "id": "15",
+    "name": "közlekedés és szállítmányozás",
+    "multiplier": 2.2
+  },
+  {
+    "id": "16",
+    "name": "kreatív",
+    "multiplier": 2.42
+  },
+  {
+    "id": "17",
+    "name": "mezőgazdaság és erdészet",
+    "multiplier": 2.85
+  },
+  {
+    "id": "17",
+    "name": "mezőgazdaság és erdészet",
+    "multiplier": 2.42
+  },
+  {
+    "id": "18",
+    "name": "rendészet és közszolgálat",
+    "multiplier": 2.2
+  },
+  {
+    "id": "19",
+    "name": "specializált gép- és járműgyártás",
+    "multiplier": 2.85
+  },
+  {
+    "id": "20",
+    "name": "sport",
+    "multiplier": 2.2
+  },
+  {
+    "id": "21",
+    "name": "szépészet",
+    "multiplier": 2.42
+  },
+  {
+    "id": "22",
+    "name": "szociális",
+    "multiplier": 2.2
+  },
+  {
+    "id": "23",
+    "name": "turizmus-vendéglátás",
+    "multiplier": 2.2
+  },
+  {
+    "id": "24",
+    "name": "vegyipar",
+    "multiplier": 2.85
+  },
+  {
+    "id": "24",
+    "name": "vegyipar",
+    "multiplier": 2.42
+  }
+]
