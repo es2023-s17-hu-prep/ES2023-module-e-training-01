@@ -56,4 +56,104 @@ Create a standalone web component named `DateTimeline` to visually represent a r
 ![Example 3.](web-components/date-timeline-component-sample3.png)
 
 ### PWA Development:
-- ...
+Your task is divided into two phases. In phase 1, you'll create the dual calculator based on the classes you've tested in the Automated Test task. In phase 2, you'll be provided with the fully working version of the calculator. Your challenge will be to transform it into a PWA. This PWA should be installable, function seamlessly offline, and be able to handle push notifications from the provided backend.
+
+#### Phase 1: Dual Calculator Development
+
+##### Requirements:
+
+###### HTML Structure:
+- Integrate `tailwind.css` and `dualCalculator.js` into your HTML.
+- Incorporate a dropdown for certificate selection.
+- Add dropdowns for:
+  - Starting year with a range from 2023 to 2027 and a default of 2023.
+  - Starting month with a default of September.
+  - Ending year with a range from 2023 to 2028 and a default of 2023.
+  - Ending month with a default of October.
+- Include number inputs for working days (with a default of 20) and the number of students (defaulting to 1).
+![Example 3.](pwa/dualcalculator.png)
+
+###### JavaScript Functionality:
+- Fetch certificates and populate the certificate dropdown using data from the `/certificates` endpoint.
+- Obtain the base amount for calculations from the `/base-amount` endpoint.
+- Instantiate the `DualCalculator` class and invoke appropriate methods to derive tax refunds and salary costs.
+- Implement real-time recalculation and update displayed values when any input undergoes modification.
+
+###### Tailwind CSS Styling:
+- Adopt a coherent design approach, employing harmonious colors and typography.
+- Ensure that the design is mobile-responsive.
+- Match the layout and design aesthetics to the provided wireframe.
+
+###### Testing:
+- Confirm the accuracy of the calculator's computations.
+- Validate real-time updates of displayed values on input alterations.
+- Examine the interface's responsiveness across various screen dimensions.
+
+###### Documentation:
+- Maintain clarity and organization in your codebase.
+- Include comments where necessary, detailing any decisions or assumptions made.
+- Ensure all HTML, CSS (barring Tailwind), and JS (aside from `dualCalculator.js`) are consolidated into a singular file.
+
+> **Note:**  
+Your work will be evaluated based on functionality, design quality, code clarity, and the overall user experience. Ensure you adhere to best practices throughout your development process.
+
+#### Phase 2: PWA Development with Notifications
+
+![Example 3.](pwa/dualcalculator_push_notfication.png)
+
+1. **PWA Installation & Offline Functionality**
+    - Ensure your application can be installed as a Progressive Web App.
+    - The application should function offline by caching necessary assets and data.
+
+2. **Push Notification Integration**
+    - Subscribe to push notifications by making a POST request to `/subscribe`.
+    - Handle incoming notifications and display them to the user.
+    - Note: For testing purposes, the server increments the base amount by 50,000 and sends a notification every set interval (default: 20 seconds).
+
+3. **Fetching Data**
+    - Fetch the base amount from the `/base-amount` endpoint.
+    - Fetch the sectors using the `/sectors` endpoint.
+    - Fetch the certificates from the `/certificates` endpoint.
+
+4. **Configuring Notification Interval**
+    - The backend provides an option to set the notification interval via the `/interval` endpoint. You can use this during testing to adjust the frequency of push notifications. Default is 20 seconds, but can be modified as needed.
+
+5. **Description of the APIs**
+    - **/subscribe**: Accepts a subscription object to register a client for push notifications.
+    - **/trigger-push**: Manually triggers a push notification to all subscribed clients. This endpoint is mostly for testing purposes. (not used here)
+    - **/base-amount**: Provides the current base amount used in the calculator.
+    - **/sectors**: Returns a list of sectors.
+    - **/certificates**: Returns a list of available certificates.
+    - **/interval**: Accepts a new interval (in milliseconds) and updates the frequency of automatic base amount updates and notifications.
+
+6. **Notification Service Details**
+    - Notifications will be sent using the VAPID method, with the provided public and private keys. The public key is: `BMFpN5ygbDHD48ZqHhMiK3HzbyNYNlMK8utm5_it3qcWGBsEi22n674SR5MDB_Fs5LH08R1sHJRxPUSDlbwnagU`
+    - Each notification contains the updated base amount, a title, a body, an icon, and data specific to the notification.The server will automatically send a notification about the base amount update every set interval.
+    
+    ```
+    {
+        title: `Base Amount Updated`,
+        body: `New base amount is 2050000 HUF`,
+        icon: "icons/icon-512x512.png",
+        data: {
+            baseAmount: baseAmount,
+        }
+    }
+    ```
+
+7. **Security & Best Practices**
+    - Ensure you handle data responsibly. Protect user's subscription details and ensure that push notifications don't become intrusive.
+    - Implement error-handling for potential issues like failed push subscriptions or errors during the notification process.
+
+8. **Testing & Documentation**
+    - Thoroughly test the offline functionality and the responsiveness of your PWA.
+    - Test push notification behavior to ensure notifications are received and displayed correctly.
+    - Document any special considerations or assumptions you've made during the development process.
+
+9. **Submission**
+    - Ensure all dependencies are clearly listed.
+    - Package and submit your application adhering to the specified guidelines.
+
+> **Note:**  
+Your Phase 2 work will be assessed based on the PWA's functionality, the reliability of offline operations, the efficiency of push notifications, and the overall user experience.
+
