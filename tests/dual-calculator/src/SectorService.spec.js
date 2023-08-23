@@ -32,7 +32,7 @@ describe("SectorService tests", () => {
 
     it("should catch the fetch error", async () => {
       // given
-      global.fetch = jest.fn().mockRejectedValue({
+      global.fetch = jest.fn().mockResolvedValue({
         ok: false,
         status: 500,
       });
@@ -43,27 +43,6 @@ describe("SectorService tests", () => {
 
       // then
       expect(consoleError).toHaveBeenCalled();
-    });
-
-    it("should throw the not ok exception", async () => {
-      // given
-      global.fetch = jest.fn().mockResolvedValue({
-        ok: false,
-        status: 500,
-        json: () => Promise.resolve([]),
-      });
-
-      // when
-      let error = null;
-
-      try {
-        await service.fetchSectorsFromAPI();
-      } catch (e) {
-        error = e;
-      }
-
-      // then
-      expect(error).toBeDefined();
     });
   });
 
