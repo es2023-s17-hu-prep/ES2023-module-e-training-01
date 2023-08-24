@@ -12,6 +12,11 @@
     <style>
       /* Additional custom styles if needed */
     </style>
+
+    <!-- PWA STUFF -->
+    <meta name="theme-color" content="#000000" />
+    <link rel="apple-touch-icon" href="./icons/icon-192x192.png" />
+    <link rel="manifest" href="./manifest.json" />
   </head>
 
   <body class="bg-gray-200 h-screen font-sans">
@@ -94,6 +99,32 @@
     <!-- Include the provided JS file -->
 
     <script>
+      // register the service worker
+      if ("serviceWorker" in navigator) {
+        (async () => {
+          const register = await navigator.serviceWorker.register("./sw.js");
+
+          // subscribe to push notifications
+          try {
+            const subscription = await register.pushManager.subscribe({
+              userVisibleOnly: true,
+              applicationServerKey:
+                "BMFpN5ygbDHD48ZqHhMiK3HzbyNYNlMK8utm5_it3qcWGBsEi22n674SR5MDB_Fs5LH08R1sHJRxPUSDlbwnagU",
+            });
+
+            await fetch("/subscribe", {
+              method: "POST",
+              body: JSON.stringify(subscription),
+              headers: {
+                "Content-Type": "application/json",
+              },
+            });
+          } catch (e) {
+            console.error("Failed to subscribe.", e);
+          }
+        })();
+      }
+
       let baseAmount = 2000000; // This will be updated if a push notification is received.
       const monthlySalary = 100000;
 
@@ -196,10 +227,10 @@
           console.error(error.message);
         }
       };
-      
+
       const currencyFormat = (num) => {
-        return new Intl.NumberFormat('hu-HU').format(num) + ' Ft';
-      }
+        return new Intl.NumberFormat("hu-HU").format(num) + " Ft";
+      };
       // Fetch data and populate dropdowns
       fetchAndPopulateData().then(() => {
         // Initial calculation after populating data
@@ -215,8 +246,6 @@
       endMonthDropdown.addEventListener("change", calculate);
       numStudentsInput.addEventListener("input", calculate);
       numWorkingDaysInput.addEventListener("input", calculate);
-
-
     </script>
   </body>
 </html>
