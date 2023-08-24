@@ -1,19 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Dual Calculator</title>
     <!-- Tailwind CSS CDN -->
     <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-      rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+            rel="stylesheet"
     />
-    <style>
-      /* Additional custom styles if needed */
-    </style>
-  </head>
-  <body>
-    
-  </body>
-  </html>
+
+    <script src="dualCalculator.js"></script>
+</head>
+<body>
+<!-- Container -->
+<div class="flex flex-col items-center justify-center h-screen bg-gray-100">
+    <!-- Salary card -->
+    <div class="flex flex-col justify-center max-w-xs w-full gap-4">
+        <!-- Card title -->
+        <h1 class="text-xl font-bold">Dual Calculator</h1>
+
+        <!-- Form card -->
+        <div class="flex flex-col w-full rounded-md bg-white p-4 shadow-lg gap-4">
+            <!-- Certification form group -->
+            <div class="flex flex-col gap-2">
+                <label for="certification">Select certification</label>
+                <select class="border rounded-md p-2" name="certification" id="certification">
+                    <option value="c1">C1</option>
+                </select>
+            </div>
+
+            <!-- Starting form group -->
+            <div class="flex flex-col md:flex-row gap-3">
+                <div class="flex flex-col gap-2 w-full">
+                    <label for="starting-year">Starting year</label>
+                    <select class="border rounded-md p-2" name="starting-year" id="starting-year">
+                        <option value="2023" selected>2023</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                        <option value="2026">2026</option>
+                        <option value="2027">2027</option>
+                    </select>
+                </div>
+                <div class="flex flex-col gap-2 w-full">
+                    <label for="starting-month">Starting month</label>
+                    <select class="border rounded-md p-2" name="starting-month" id="starting-month">
+                        <option value="1">January</option>
+                        <option value="2">February</option>
+                        <option value="3">March</option>
+                        <option value="4">April</option>
+                        <option value="5">May</option>
+                        <option value="6">June</option>
+                        <option value="7">July</option>
+                        <option value="8">August</option>
+                        <option value="9" selected>September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Ending form group -->
+            <div class="flex flex-col md:flex-row gap-3">
+                <div class="flex flex-col gap-2 w-full">
+                    <label for="ending-year">Ending year</label>
+                    <select class="border rounded-md p-2" name="ending-year" id="ending-year">
+                        <option value="2023" selected>2023</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                        <option value="2026">2026</option>
+                        <option value="2027">2027</option>
+                    </select>
+                </div>
+                <div class="flex flex-col gap-2 w-full">
+                    <label for="ending-month">Ending month</label>
+                    <select class="border rounded-md p-2" name="ending-month" id="ending-month">
+                        <option value="1">January</option>
+                        <option value="2">February</option>
+                        <option value="3">March</option>
+                        <option value="4">April</option>
+                        <option value="5">May</option>
+                        <option value="6">June</option>
+                        <option value="7">July</option>
+                        <option value="8">August</option>
+                        <option value="9">September</option>
+                        <option value="10" selected>October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Working days form group -->
+            <div class="flex flex-col gap-2">
+                <label for="days">Number of working days</label>
+                <input value="20" class="border rounded-md p-2" name="days" id="days" type="number" />
+            </div>
+
+            <!-- Students form group -->
+            <div class="flex flex-col gap-2">
+                <label for="students">Number of students</label>
+                <input value="1" class="border rounded-md p-2" name="students" id="students" type="number" />
+            </div>
+
+            <!-- Output -->
+            <div class="col gap-2">
+                <div>
+                    Certificate multiplier: <span id="multiplier"></span>
+                </div>
+                <div>
+                    Base amount: <span id="base"></span>
+                </div>
+                <div>
+                    Salary per month: <span id="salary"></span>
+                </div>
+                <div>
+                    Total tax refund: <span id="refund"></span>
+                </div>
+                <div>
+                    Total salary cost: <span id="cost"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    (async function () {
+        // Register the service worker
+
+        // Find the input elements
+        const certificationInput = document.getElementById('certification');
+        const startingYearInput = document.getElementById('starting-year');
+        const startingMonthInput = document.getElementById('starting-month');
+        const endingYearInput = document.getElementById('ending-year');
+        const endingMonthInput = document.getElementById('ending-month');
+        const daysInput = document.getElementById('days');
+        const studentsInput = document.getElementById('students');
+
+        // Find output elements
+        const multiplierOutput = document.getElementById('multiplier');
+        const baseOutput = document.getElementById('base');
+        const salaryOutput = document.getElementById('salary');
+        const refundOutput = document.getElementById('refund');
+        const costOutput = document.getElementById('cost');
+
+        // initialize services
+        const sectorService = new SectorService();
+        const certificateService = new CertificateService(sectorService);
+
+        // load data from api
+        await Promise.all([sectorService.fetchSectorsFromAPI(), certificateService.fetchCertificatesFromAPI()]);
+
+        // update function
+        function update() {
+           // Update certificate list
+            certificationInput.innerHTML = '';
+            const certs = certificateService.getAllCertificates();
+            certs.forEach(e => {
+                const option = document.createElement('option');
+                option.setAttribute('value', e.id);
+                option.innerText = e.name;
+                certs.forEach(c => certificationInput.appendChild(option))
+            });
+        }
+
+        // Recalculate salary details
+        async function recalculate() {
+            // Currency formatter
+            const formatter = new Intl.NumberFormat(undefined, {
+                currency: 'HUF',
+                style: 'currency',
+                maximumFractionDigits: 0
+            })
+
+            // Starting and ending date
+            const startingDate = {year: parseInt(startingYearInput.value), month: parseInt(startingMonthInput.value)};
+            const endingDate = {year: parseInt(endingYearInput.value), month: parseInt(endingMonthInput.value)};
+
+            // Certificate
+            const certificateId = certificationInput.value;
+            const certificate = certificateService.getCertificateById(certificateId);
+
+            // Calculation details
+            const students = parseInt(studentsInput.value);
+            const workingDays = parseInt(daysInput.value);
+            const monthlySalary = 100_000;
+
+            // Create a new calculator instance
+            const calculator = new DualCalculator(startingDate, endingDate, certificateId, students, workingDays, monthlySalary)
+
+            // Set the output
+            multiplierOutput.innerText = certificate.sector.multiplier;
+            salaryOutput.innerText = formatter.format(monthlySalary);
+            costOutput.innerText = formatter.format(calculator.getSalaryCost());
+            baseOutput.innerText = formatter.format(await calculator.fetchBaseAmount());
+            refundOutput.innerText = formatter.format(await calculator.getTaxRefund(certificateService));
+        }
+
+        // Attach event listeners to all inputs and selects
+        document.querySelectorAll('input, select').forEach(input => input.addEventListener('change', recalculate))
+
+        update();
+        recalculate();
+    })();
+</script>
+</body>
+</html>
