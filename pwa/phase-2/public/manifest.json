@@ -1,0 +1,20 @@
+{
+  "start_url": ".",
+  "display": "standalone",
+  "name": "Dual Calulator",
+  "short_name": "Calculator",
+  "icons": [
+    {
+      "src": "./icons/icon-192x192.png",
+      "sizes": "192x192",
+      "purpose": "any",
+      "type": "image/png"
+    },
+    {
+      "src": "./icons/icon-512x512.png",
+      "sizes": "512x512",
+      "purpose": "any",
+      "type": "image/png"
+    }
+  ]
+}
