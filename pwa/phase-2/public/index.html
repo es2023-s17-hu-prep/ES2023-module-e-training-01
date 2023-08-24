@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dual Calculator</title>
+    <!-- Tailwind CSS CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* Additional custom styles if needed */
+    </style>
+  </head>
+
+  <body class="bg-gray-200 h-screen font-sans">
+    <div class="container mx-auto p-4 max-w-md">
+      <h1 class="text-2xl font-bold mb-4">Dual Calculator</h1>
+      <div class="bg-white p-4 rounded shadow">
+        <label class="block mb-2">Select Certification:</label>
+        <select id="certification" class="mb-4 border rounded w-full p-2">
+          <!-- Options will be populated from the data -->
+        </select>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block mb-2">Starting Year:</label>
+            <select id="startYear" class="border rounded w-full p-2">
+              <!-- Years from 2023-2027 will be populated using JS -->
+            </select>
+          </div>
+
+          <div>
+            <label class="block mb-2">Starting Month:</label>
+            <select id="startMonth" class="border rounded w-full p-2">
+              <!-- Months will be populated using JS -->
+            </select>
+          </div>
+
+          <div>
+            <label class="block mb-2">Ending Year:</label>
+            <select id="endYear" class="border rounded w-full p-2">
+              <!-- Years from 2023-2028 will be populated using JS -->
+            </select>
+          </div>
+
+          <div>
+            <label class="block mb-2">Ending Month:</label>
+            <select id="endMonth" class="border rounded w-full p-2">
+              <!-- Months will be populated using JS -->
+            </select>
+          </div>
+        </div>
+
+        <label class="block mt-4 mb-2">Number of Working Days:</label>
+        <input
+          type="number"
+          id="numWorkingDays"
+          class="border rounded w-full p-2"
+          min="1"
+          value="20"
+        />
+
+        <label class="block mt-4 mb-2">Number of Students:</label>
+        <input
+          type="number"
+          id="numStudents"
+          class="border rounded w-full p-2"
+          min="1"
+          value="1"
+        />
+
+        <div class="mt-4">
+          <p class="text-xl">
+            Certificate multiplier: <span id="multiplier"></span>
+          </p>
+          <p class="text-xl mt-2">
+            Base amount: <span id="base-amount"></span>
+          </p>
+          <p class="text-xl mt-2">
+            Salary per month : <span id="base-amount">100.000 HUF</span>
+          </p>
+          <p class="text-xl mt-2">
+            Total Tax Refund: <span id="taxRefund">0 HUF</span>
+          </p>
+          <p class="text-xl mt-2">
+            Total Salary Cost: <span id="salaryCost">0 HUF</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <script src="dualCalculator.js"></script>
+    <!-- Include the provided JS file -->
+
+    <script>
+      let baseAmount = 2000000; // This will be updated if a push notification is received.
+      const monthlySalary = 100000;
+
+      // UI elements
+      const certificationDropdown = document.getElementById("certification");
+      const startYearDropdown = document.getElementById("startYear");
+      const startMonthDropdown = document.getElementById("startMonth");
+      const endYearDropdown = document.getElementById("endYear");
+      const endMonthDropdown = document.getElementById("endMonth");
+      const numStudentsInput = document.getElementById("numStudents");
+      const numWorkingDaysInput = document.getElementById("numWorkingDays");
+      const taxRefundElement = document.getElementById("taxRefund");
+      const salaryCostElement = document.getElementById("salaryCost");
+      const certificateMultiplier = document.getElementById("multiplier");
+      const baseAmountElement = document.getElementById("base-amount");
+
+      // Populate dropdowns with options
+
+      for (let year = 2023; year <= 2027; year++) {
+        startYearDropdown.appendChild(new Option(year, year));
+      }
+
+      for (let year = 2023; year <= 2028; year++) {
+        endYearDropdown.appendChild(new Option(year, year));
+      }
+
+      const months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+      months.forEach((month, index) => {
+        const option = new Option(month, index + 1);
+        startMonthDropdown.appendChild(option.cloneNode(true));
+        endMonthDropdown.appendChild(option.cloneNode(true));
+      });
+
+      startMonthDropdown.value = "9"; // Default September
+      endMonthDropdown.value = "10"; // Default October
+
+      // Initialize services
+      const sectorService = new SectorService();
+      let certificateService;
+
+      const fetchAndPopulateData = async () => {
+        await sectorService.fetchSectorsFromAPI();
+        certificateService = new CertificateService(sectorService);
+        const certificates =
+          await certificateService.fetchCertificatesFromAPI();
+
+        // Populate certification dropdown
+        certificates.forEach((cert) => {
+          certificationDropdown.appendChild(new Option(cert.name, cert.id));
+        });
+      };
+
+      // Calculate tax refund and salary cost
+      const calculate = async () => {
+        const startingDate = {
+          year: parseInt(startYearDropdown.value),
+          month: parseInt(startMonthDropdown.value),
+        };
+        const endingDate = {
+          year: parseInt(endYearDropdown.value),
+          month: parseInt(endMonthDropdown.value),
+        };
+        const certificateId = certificationDropdown.value;
+        const numberOfStudent = parseInt(numStudentsInput.value);
+        const numberOfWorkingDay = parseInt(numWorkingDaysInput.value);
+
+        const calculator = new DualCalculator(
+          startingDate,
+          endingDate,
+          certificateId,
+          numberOfStudent,
+          numberOfWorkingDay,
+          monthlySalary
+        );
+
+        try {
+          certificateMultiplier.textContent = `${certificateService
+            .getCertificateMultiplierById(certificateId)
+            .toFixed(2)}`;
+          //baseAmountElement.textContent = `${baseAmount} HUF`;
+          baseAmountElement.textContent = currencyFormat(baseAmount);
+          const taxRefund = await calculator.getTaxRefund(certificateService);
+          taxRefundElement.textContent = currencyFormat(taxRefund);
+          const salaryCost = calculator.getSalaryCost();
+          salaryCostElement.textContent = currencyFormat(salaryCost);
+        } catch (error) {
+          console.error(error.message);
+        }
+      };
+      
+      const currencyFormat = (num) => {
+        return new Intl.NumberFormat('hu-HU').format(num) + ' Ft';
+      }
+      // Fetch data and populate dropdowns
+      fetchAndPopulateData().then(() => {
+        // Initial calculation after populating data
+        console.log("Data loaded");
+        calculate();
+      });
+
+      // Event listeners
+      certificationDropdown.addEventListener("change", calculate);
+      startYearDropdown.addEventListener("change", calculate);
+      startMonthDropdown.addEventListener("change", calculate);
+      endYearDropdown.addEventListener("change", calculate);
+      endMonthDropdown.addEventListener("change", calculate);
+      numStudentsInput.addEventListener("input", calculate);
+      numWorkingDaysInput.addEventListener("input", calculate);
+
+
+    </script>
+  </body>
+</html>

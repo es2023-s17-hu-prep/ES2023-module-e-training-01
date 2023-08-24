@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dual Calculator</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Additional custom styles if needed */
+    </style>
+  </head>
+  <body
+    class="antialiased min-h-screen bg-slate-50 flex items-center justify-center flex-col gap-2"
+  >
+    <!-- PAGE TITLE -->
+    <h1 class="text-3xl font-bold">Dual Calculator</h1>
+
+    <!-- DUAL CALCULATOR -->
+    <section
+      class="border border-slate-300 rounded-md shadow-md px-6 py-4 flex flex-col gap-4 w-[95vw] md:w-[32rem] bg-white"
+    >
+      <!-- CERTIFICATION SELECT -->
+      <div class="flex flex-col">
+        <label for="certification">Select Certification:</label>
+        <select
+          id="certification"
+          class="border border-slate-300 rounded-md px-3 py-1.5"
+        ></select>
+      </div>
+
+      <!-- STARTING -->
+      <div class="flex items-center gap-4">
+        <div class="flex flex-col flex-1">
+          <label for="starting-year">Starting Year:</label>
+          <select
+            id="starting-year"
+            class="border border-slate-300 rounded-md px-3 py-1.5"
+          >
+            <option selected>2023</option>
+            <option>2024</option>
+            <option>2025</option>
+            <option>2026</option>
+            <option>2027</option>
+          </select>
+        </div>
+        <div class="flex flex-col flex-1">
+          <label for="starting-month">Starting Month:</label>
+          <select
+            id="starting-month"
+            class="border border-slate-300 rounded-md px-3 py-1.5"
+          >
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+            <option value="8">August</option>
+            <option value="9" selected>September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- ENDING -->
+      <div class="flex items-center gap-4">
+        <div class="flex flex-col flex-1">
+          <label for="ending-year">Ending Year:</label>
+          <select
+            id="ending-year"
+            class="border border-slate-300 rounded-md px-3 py-1.5"
+          >
+            <option selected>2023</option>
+            <option>2024</option>
+            <option>2025</option>
+            <option>2026</option>
+            <option>2027</option>
+            <option>2028</option>
+          </select>
+        </div>
+        <div class="flex flex-col flex-1">
+          <label for="ending-month">Ending Month:</label>
+          <select
+            id="ending-month"
+            class="border border-slate-300 rounded-md px-3 py-1.5"
+          >
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10" selected>October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- WORKING DAYS -->
+      <div class="flex flex-col">
+        <label for="working-days">Number of Working Days:</label>
+        <input
+          id="working-days"
+          class="border border-slate-300 rounded-md px-3 py-1.5"
+          value="20"
+          inputmode="numeric"
+        />
+      </div>
+
+      <!-- WORKING DAYS -->
+      <div class="flex flex-col">
+        <label for="students">Number of Students:</label>
+        <input
+          id="students"
+          class="border border-slate-300 rounded-md px-3 py-1.5"
+          value="1"
+          inputmode="numeric"
+        />
+      </div>
+
+      <div class="w-full h-[1px] bg-slate-300"></div>
+
+      <div class="flex flex-col gap-1">
+        <span>Certificate multiplier: <span id="multiplier"></span></span>
+        <span>Base amount: <span id="base"></span> HUF</span>
+        <span>Salary per month: <span id="salary"></span> HUF</span>
+        <span>Total Tax Refund: <span id="tax-refund"></span> HUF</span>
+        <span>Total Salary Cost: <span id="total-salary"></span> HUF</span>
+      </div>
+    </section>
+
+    <!-- SCRIPT -->
+    <script src="./dualCalculator.js"></script>
+    <script>
+      // services
+      const sectorService = new SectorService();
+      const certificateService = new CertificateService(sectorService);
+
+      // variables
+      const certification = document.getElementById("certification");
+      const students = document.getElementById("students");
+      const workingDays = document.getElementById("working-days");
+      const multiplier = document.getElementById("multiplier");
+      const base = document.getElementById("base");
+      const salary = document.getElementById("salary");
+      const taxRefund = document.getElementById("tax-refund");
+      const totalSalary = document.getElementById("total-salary");
+
+      const startingYear = document.getElementById("starting-year");
+      const startingMonth = document.getElementById("starting-month");
+      const endingYear = document.getElementById("ending-year");
+      const endingMonth = document.getElementById("ending-month");
+
+      const SALARY_PER_MONTH = 100_000;
+
+      // currency format
+      const hufFormatter = Intl.NumberFormat("hu-HU", {
+        currency: "HUF",
+      });
+
+      // fetch on page load
+      (async () => {
+        const [certs, sectors] = await Promise.all([
+          certificateService.fetchCertificatesFromAPI(),
+          sectorService.fetchSectorsFromAPI(),
+        ]);
+
+        certification.innerHTML = certs
+          .map((c) => `<option value="${c.id}">${c.name}</option>`)
+          .join("");
+
+        await handleInputChange();
+      })();
+
+      // function that updates every necessary item on every input change
+      async function handleInputChange() {
+        // multiplier
+        multiplier.innerText = certificateService.getCertificateMultiplierById(
+          certification.value
+        );
+        salary.innerText = hufFormatter.format(SALARY_PER_MONTH);
+
+        // define the dual calculator
+        const dualCalculator = new DualCalculator(
+          {
+            year: Number(startingYear.value),
+            month: Number(startingMonth.value),
+          },
+          { year: Number(endingYear.value), month: Number(endingMonth.value) },
+          certification.value,
+          Number(students.value),
+          Number(workingDays.value),
+          SALARY_PER_MONTH
+        );
+
+        // tax refund
+        taxRefund.innerText = hufFormatter.format(
+          await dualCalculator.getTaxRefund(certificateService)
+        );
+
+        // base amount
+        base.innerText = hufFormatter.format(dualCalculator.baseAmount);
+
+        // total salary
+        totalSalary.innerText = hufFormatter.format(
+          dualCalculator.getSalaryCost()
+        );
+      }
+
+      // react to the input changes
+      certification.addEventListener("change", handleInputChange);
+      startingYear.addEventListener("change", handleInputChange);
+      startingMonth.addEventListener("change", handleInputChange);
+      endingMonth.addEventListener("change", handleInputChange);
+      endingYear.addEventListener("change", handleInputChange);
+      workingDays.addEventListener("input", handleInputChange);
+      students.addEventListener("input", handleInputChange);
+    </script>
+  </body>
+</html>
